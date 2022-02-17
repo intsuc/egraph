@@ -8,4 +8,10 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
+    implementation("it.unimi.dsi:fastutil:8.5.8")
+    testImplementation(kotlin("test"))
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
