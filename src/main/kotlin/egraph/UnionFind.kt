@@ -7,26 +7,26 @@ class UnionFind(capacity: Int = 10) {
     private val parents: IntArrayList = IntArrayList(capacity)
     private val ranks: ByteArrayList = ByteArrayList(capacity)
 
-    private inline var Int.parent
-        get(): Int = parents.getInt(this)
+    private inline var EClassId.parent
+        get(): EClassId = parents.getInt(this)
         set(value) {
             parents[this] = value
         }
 
-    private inline var Int.rank
+    private inline var EClassId.rank
         get(): Byte = ranks.getByte(this)
         set(value) {
             ranks[this] = value
         }
 
-    fun new(): Int = parents.size.also {
+    fun new(): EClassId = parents.size.also {
         parents += it
         ranks += 0
     }
 
-    fun union(x1: Int, x2: Int) {
-        val root1 = find(x1)
-        val root2 = find(x2)
+    fun union(a: EClassId, b: EClassId) {
+        val root1 = find(a)
+        val root2 = find(b)
 
         if (root1 == root2) return
 
@@ -43,8 +43,8 @@ class UnionFind(capacity: Int = 10) {
         }
     }
 
-    fun find(x: Int): Int {
-        var self = x
+    fun find(a: EClassId): EClassId {
+        var self = a
         while (self != self.parent) {
             val grandparent = self.parent.parent
             self.parent = grandparent
@@ -53,5 +53,5 @@ class UnionFind(capacity: Int = 10) {
         return self
     }
 
-    fun equals(x1: Int, x2: Int): Boolean = find(x1) == find(x2)
+    fun equals(a: EClassId, b: EClassId): Boolean = find(a) == find(b)
 }
