@@ -3,9 +3,9 @@ package egraph
 import it.unimi.dsi.fastutil.bytes.ByteArrayList
 import it.unimi.dsi.fastutil.ints.IntArrayList
 
-class UnionFind(capacity: Int = 10) {
-    private val parents: IntArrayList = IntArrayList(capacity)
-    private val ranks: ByteArrayList = ByteArrayList(capacity)
+class UnionFind() {
+    private val parents: IntArrayList = IntArrayList()
+    private val ranks: ByteArrayList = ByteArrayList()
 
     private inline var EClassId.parent
         get(): EClassId = parents.getInt(this)
