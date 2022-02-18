@@ -55,4 +55,19 @@ class EGraphTest {
             assertEquals(find(f), find(g))
         }
     }
+
+    @Test
+    fun alreadyEquivalent() {
+        EGraph().run {
+            val a1 = add(ENode("a"))
+            val b = add(ENode("b"))
+            assertNotEquals(find(a1), find(b))
+
+            merge(a1, b)
+            assertEquals(find(a1), find(b))
+
+            val a2 = add(ENode("a"))
+            assertEquals(find(a1), find(a2))
+        }
+    }
 }

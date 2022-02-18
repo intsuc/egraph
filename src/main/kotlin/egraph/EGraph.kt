@@ -20,7 +20,9 @@ class EGraph {
 
     fun merge(a: EClassId, b: EClassId) {
         unionFind.union(a, b)
-        classes[unionFind.find(a)] = classes[a] union classes[b]
+        val id = unionFind.find(a)
+        classes[id] = classes[a] union classes[b]
+        classes -= if (id == a) b else a
     }
 
     fun find(a: EClassId): EClassId = unionFind.find(a)
